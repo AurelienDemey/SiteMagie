@@ -42,6 +42,10 @@ a {
     color :var(--textColor);
 }
 
+.underline{
+    text-decoration: underline;
+}
+
 /* ***********************************NAVBAR****************************************** */
 
 nav {
