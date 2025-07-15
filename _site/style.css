@@ -29,7 +29,7 @@ h2 {
     text-transform: uppercase;
     text-align: center;
     padding-top: 30;
-    font-size: 2em;
+    font-size: 2rem;
     color: var(--textColor);
     font-weight: normal;
 }
@@ -62,7 +62,7 @@ nav {
 
 header li {
     float: right;
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 header li a {
     text-decoration: none;
@@ -90,7 +90,7 @@ h1{
     font-family: 'Lobster Two', cursive;
     text-align: center;
     color: var(--textColor);
-    font-size: 4em;
+    font-size: 4rem;
     margin-top: 100px;
     text-shadow: 1px 3px 2px var(--gris);
 }
@@ -107,7 +107,7 @@ h3{
     font-weight: 200;
     color: var(--textColor);
     text-align: center;
-    font-size: 3em;
+    font-size: 3rem;
     text-shadow: 1px 3px 2px rgb(0, 0, 0);
 }
 
@@ -125,7 +125,7 @@ h3{
 
 #textIntro{
     padding: 10px 5%;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     width: 341px;
     text-align: justify;
     /* justify-content: center; */
@@ -148,7 +148,7 @@ h3{
 .imagesPrestations h4{
     font-family: 'Dancing Script', cursive;
     text-align: center;
-    font-size: 1.8em;
+    font-size: 1.8rem;
     margin: 15px;
     font-weight: 300;
 }
@@ -192,7 +192,7 @@ input, textarea, button {
     /* max-width: 900px; */
     padding: 15x 10px;
     margin: 1px 0;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     font-family: 'Advent Pro', sans-serif;
     border-radius: 8px;
 }
@@ -202,7 +202,7 @@ textarea{
 }
 
 button{
-    font-size: 1.5em;
+    font-size: 1.5rrem;
 }
 
 button:hover{
@@ -247,4 +247,10 @@ button:hover{
 
 #avisTitre{
     padding-top: 60px;
+}
+
+@media all and (max-width: 500px){
+    body{
+        color: blue;
+    }
 }
