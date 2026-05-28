@@ -28,7 +28,7 @@ li {
 h2 {
     text-transform: uppercase;
     text-align: center;
-    padding-top: 30;
+    padding-top: 30px;
     font-size: 2rem;
     color: var(--textColor);
     font-weight: normal;
@@ -54,6 +54,7 @@ nav {
     position: fixed;
     width : 100%;
     opacity: 0.9;
+    z-index: 100;
 }
 
 #navBarLeft {
@@ -72,16 +73,13 @@ header li a {
 }
 #logo {
     font-family: 'Lobster Two', cursive;
-    /* font-weight: bold; */
     float: left;
     padding-left: 10%;
 }
 
 /* *****************************IMAGE PRINCIPALE **************************/
 #imagePrincipale {
-    /* background: url(media/cartes.jpg) no-repeat fixed 50% 50%; */
     padding-top: 60px;
-    /* background-size: cover; */
     height: 400px;
 }
 
@@ -115,9 +113,7 @@ h3{
 
 #presentation {
     background-color: var(--backgroundcolor);
-    /* padding: 0 10%; */
     text-emphasis-color: white;
-    /* text-align: center; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;    
@@ -128,57 +124,25 @@ h3{
     font-size: 1.2rem;
     width: 341px;
     text-align: justify;
-    /* justify-content: center; */
 }
 
 #photo{
     padding: 30px 5%;
-    /* width: 40%;   */
 }
-
-
-
-/* #prestations {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 30px 10%;
-}
-
-.imagesPrestations h4{
-    font-family: 'Dancing Script', cursive;
-    text-align: center;
-    font-size: 1.8rem;
-    margin: 15px;
-    font-weight: 300;
-}
-
-.imagesPrestations img {
-    box-shadow: 1px 3px 2px black;
-    border-radius: 10px;
-}
-
-.imagesPrestations img:hover {
-    opacity: 0.5;
-    transform: scale(1.05);
-    transition: 0.1s ease-in-out;
-} */
 
 /* **********************************FOOTER****************** */
 
 footer{
-text-align: center;
-padding: 20px 0 10px 0;
-font-family: 'Advent Pro', sans-serif;
-font-weight: 200;
+    text-align: center;
+    padding: 20px 0 10px 0;
+    font-family: 'Advent Pro', sans-serif;
+    font-weight: 200;
 }
 
 #coordonnees ul{
     color: var(--textColor);
     padding: 0;
     margin: 20px;
-    /* display: flex;
-    justify-content: center; */
 }
 
 form{
@@ -188,9 +152,8 @@ form{
 
 input, textarea, button {
     border: none;
-    width : 55%;
-    /* max-width: 900px; */
-    padding: 15x 10px;
+    width: 55%;
+    padding: 15px 10px; /* corrigé: 15x → 15px */
     margin: 1px 0;
     font-size: 1.2rem;
     font-family: 'Advent Pro', sans-serif;
@@ -202,7 +165,7 @@ textarea{
 }
 
 button{
-    font-size: 1.5rrem;
+    font-size: 1.5rem; /* corrigé: 1.5rrem → 1.5rem */
 }
 
 button:hover{
@@ -249,8 +212,132 @@ button:hover{
     padding-top: 60px;
 }
 
-@media all and (max-width: 500px){
-    body{
-        color: blue;
+/* **********************************RESPONSIVE************************************** */
+
+/* Tablette (max 768px) */
+@media (max-width: 768px) {
+
+    /* Navbar : on empile logo + liens */
+    nav {
+        position: relative; /* la navbar ne sera plus fixe sur mobile */
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #logo {
+        float: none;
+        padding-left: 0;
+        padding: 15px 0 5px 0;
+        text-align: center;
+    }
+
+    #navBarLeft {
+        padding-right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+    }
+
+    header li {
+        float: none;
+        font-size: 1rem;
+    }
+
+    /* Image principale : ajuster le padding car navbar n'est plus fixe */
+    #imagePrincipale {
+        padding-top: 20px;
+        height: auto;
+        padding-bottom: 30px;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+        margin-top: 40px;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    /* Présentation : photo sous le texte */
+    #presentation {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 5%;
+    }
+
+    #textIntro {
+        width: 100%;
+        padding: 20px 0;
+        box-sizing: border-box;
+    }
+
+    #photo {
+        padding: 10px 0 30px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    #photo img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Formulaire pleine largeur */
+    input, textarea, button {
+        width: 90%;
+        box-sizing: border-box;
+    }
+
+    #deuxiemeTrait {
+        width: 90%;
+    }
+
+    /* Copyright et icônes empilés */
+    #copyrightEtIcons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 0;
+    }
+
+    #copyright {
+        width: 100%;
+        text-align: center;
+    }
+
+    #icons {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Mobile (max 480px) */
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    #textIntro {
+        font-size: 1rem;
+    }
+
+    header li a {
+        padding: 10px 10px;
     }
 }
