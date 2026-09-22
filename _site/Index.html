@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Aurélien Demey Magicien</title>
-        
+
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     </head>
@@ -13,76 +13,168 @@
         <header>
           <nav>
             <ul>
-              <li id="logo"><a href="#">Aurélien Demey Magicien</a></li>
+              <li id="logo">
+                <a href="#">
+                  <img class="logo-horizontal" alt="Aurélien Demey Magicien" src="media/Logo_Horizontal.png" />
+                </a>
+              </li>
               <div id="navBarLeft">
-              <li><a href="prestations.html">Prestations</a></li>
-              <li><a href="avis.html">Avis</a></li>
-              <li><a href="#contact">Contact</a></li>
+                <li><a href="prestations.html">Prestations</a></li>
+                <li class="nav-dot">&#9670;</li>
+                <li><a href="avis.html">Avis</a></li>
+                <li class="nav-dot">&#9670;</li>
+                <li><a href="#contact">Contact</a></li>
               </div>
             </ul>
           </nav>
-
-          <div id="imagePrincipale">
-            <h1>Aurélien Demey</h1>
-            <div id="premierTrait"></div>
-            <h3>Magicien</h3>
-          </div>
-
         </header>
-        
-        <section id="presentation">
-          <div id="textIntro">
-            <p>Spécialiste de close-up, je vous propose une magie dynamique, interactive et moderne, tout en cultivant un profond respect pour les classiques. <br><br>
-            Je m'adapte à tous types de situation. Cocktail, table à table, déambulation, sur scène, pour adulte et pour enfant, je serai ravi de personnaliser ma prestation avec vous. <br><br>
-            Je serai très heureux d'animer vos évènements privés ou professionnels : mariages, anniversaires, soirées privées, arbres de noël, enterrements de vie de jeune fille ... <br><br>
-            Mes interventions divertissantes sans être intrusives sauront émerveiller vos invités, les aider à briser la glace ou leur faire passer un moment de complicité. <br><br>
-            Mon but est de créer des moments, et des souvenirs qui resteront longtemps. </p>
-          </div>
-          <div id="photo">
-          <img alt="Aurélien en exercice de close up" src="media/PhotoAurelien.jpg"  />
-          </div>
 
+        <section id="hero">
+          <div id="heroPhoto">
+            <div class="photo-frame">
+              <img alt="Aurélien en exercice de close up" src="media/Aurelien_presentation.jpg" />
+            </div>
+          </div>
+          <div id="heroText">
+            <h1>Aurélien Demey</h1>
+            <p class="tagline">Une magie interactive et moderne.</p>
+            <p>C'est près de 10 ans de passion qui ont fait de moi un spécialiste du close up, cette magie vue de tout près faite pour créer des moments inoubliables emplis d'émerveillement et de mystère.</p>
+            <p>Avec une approche moderne, dynamique et très interactive je m'adapte à tout type d'évènement et d'environnements.</p>
+            <a href="#contact" class="btn">Contactez-moi</a>
+          </div>
+        </section>
+
+        <section id="features">
+          <div class="feature-card">
+            <div class="card-frame">
+              <img class="card-frame-bg" src="media/Card01.png" alt="">
+              <img class="card-visual" src="media/Card01_Aurelien-asdecoeur.jpg" alt="Aurélien tenant un as de coeur">
+              <p class="card-caption">Des interventions divertissantes et subtiles, sauront émerveiller vos invités !</p>
+            </div>
+          </div>
+          <span class="feature-divider">&#9670;</span>
+          <div class="feature-card">
+            <div class="card-frame">
+              <img class="card-frame-bg" src="media/Card02.png" alt="">
+              <img class="card-visual" src="media/Card02_Illu_Temps.png" alt="Illustration d'un sablier">
+              <p class="card-caption">De 5 min par petits groupes à 1h de spectacle sur scène, tout est adaptable !</p>
+            </div>
+          </div>
+          <span class="feature-divider">&#9670;</span>
+          <div class="feature-card">
+            <div class="card-frame">
+              <img class="card-frame-bg" src="media/Card03.png" alt="">
+              <img class="card-visual" src="media/Card03_AurelienPresta.jpg" alt="Aurélien en pleine prestation">
+              <p class="card-caption">Pour tous vos évènements, professionnels comme familiaux.</p>
+            </div>
+          </div>
+          <span class="feature-divider">&#9670;</span>
+          <div class="feature-card">
+            <div class="card-frame">
+              <img class="card-frame-bg" src="media/Card04.png" alt="">
+              <img class="card-visual" src="media/Card04_Illu_Avis.png" alt="Illustration 5 étoiles">
+              <p class="card-caption">100% des clients satisfaits</p>
+            </div>
+          </div>
         </section>
 
         <section id="reviews">
-          <div> 
-            <h3>Ce qu'ils en ont pensé</h3>
+          <h2 class="section-title">Avis</h2>
+          <div class="reviews-track">
+            <button class="review-nav" aria-label="Avis précédents">&#10094;</button>
+
+            <div class="review-card">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>"Intrigant, magique, captivant! Nous avons passé un merveilleux moment en la compagnie d'Aurélien et de ses tours..."</p>
+              <div class="review-author">Fabrice Dupuy</div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>"Un spectacle bien construit, original et fascinant mené de main de maître par un magicien aux talents multiples..."</p>
+              <div class="review-author">Emmanuelle Cart-Tanneur</div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>"Extraordinaire. Des tours de mentalisme et de magie très personnalisés. On en reste bouche bée. On est sous le charme..."</p>
+              <div class="review-author">Veronique Philipponeau</div>
+            </div>
+
+            <button class="review-nav" aria-label="Avis suivants">&#10095;</button>
           </div>
-          <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-          <script src="https://static.elfsight.com/platform/platform.js" async></script>
-          <div class="elfsight-app-9228841d-8058-45bc-868a-ee5c452ab1e1" data-elfsight-app-lazy></div>
+        </section>
+
+        <section id="gallery">
+          <h2 class="section-title">Gallerie</h2>
+          <div class="gallery-grid">
+            <img class="gallery-photo" src="media/gallerie/gardenparty.jpg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/jeux_aurelien.jpeg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/jeux_damebleue.jpeg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/mariage_carte1.jpeg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/jeux_elastique.jpeg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/jeux_gamins.jpeg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/prestapeniche1.jpg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/mariage_1.jpeg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/mariage_billet1.jpeg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/prestapeniche2.jpg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/mariage_pieceepaule.jpeg" alt="Aurélien en intervention lors d'une garden party">
+            <img class="gallery-photo" src="media/gallerie/presta60ans.jpg" alt="Aurélien en intervention lors d'une garden party">
+          </div>
+        </section>
+
+        <section id="contact">
+          <h2 class="section-title">Contact</h2>
+          <div class="contact-wrap">
+            <form action="https://formsubmit.co/demeyaurelien@gmail.com" method="POST">
+              <div>
+                <label for="nom">Nom et prénom</label>
+                <input type="text" id="nom" name="nom" required>
+              </div>
+              <div class="form-row">
+                <div>
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                  <label for="tel">Numéro de téléphone</label>
+                  <input type="tel" id="tel" name="telephone">
+                </div>
+              </div>
+              <div>
+                <label for="message">Votre message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Envoyer</button>
+            </form>
+
+            <div class="contact-info">
+              <p>Une question ? Une demande de devis ?</p>
+              <p>Contactez moi et je vous répondrai sous 48h pour façonner avec vous l'évènement de vos rêves.</p>
+              <p>Dispo partout en France.</p>
+
+              <h4>&#9670; Téléphone</h4>
+              <p><a href="tel:0634708277">06 34 70 82 77</a></p>
+
+              <h4>&#9670; Mail</h4>
+              <p><a href="mailto:demeyaurelien@gmail.com">demeyaurelien@gmail.com</a></p>
+
+              <h4>&#9670; Instagram</h4>
+              <p><a href="https://instagram.com/aurelien_demey_magicien" target="_blank" rel="noopener"><i class="fa fa-instagram"></i> aurelien_demey_magicien</a></p>
+            </div>
+          </div>
         </section>
 
         <footer>
-          <h2 id="contact">Contact</h2>
-          <div id="coordonnees">
-            <!-- <ul>
-              <li>demeyaurelien@gmail.com</li>
-              <li>06 34 70 82 77</li>
-            </ul> -->
-            <p>demeyaurelien@gmail.com - 06 34 70 82 77</p>
+          <div class="footer-brand">
+            <img class="logo-icon" alt="Logo AD" src="media/Logo_Icon.png" />
+            <span>&copy; 2026 Aurélien Demey. Tous droits réservés.</span>
           </div>
-          <form action="https://formsubmit.co/demeyaurelien@gmail.com" method="POST">
-            <input type="text" name="nom" placeholder="nom" required>
-            <input type="email" name="email" placeholder="Votre email" required>
-            <textarea name="message" placeholder="votre message ici..." required></textarea>
-            <button>Envoyer</button>
-          </form>
-          <div id="deuxiemeTrait"></div>
-          <div id="copyrightEtIcons">
-            <div id="copyright">
-              <span>© Aurelien Demey 2025</span>
-            </div>
-            <div id="icons">
-              <a href="http://www.twitter.fr"><i class="fa fa-twitter"></i></a>
-              <a href="http://www.facebook.fr"><i class="fa fa-facebook"></i></a>
-              <a href="http://www.instagram.com"><i class="fa fa-instagram"></i></a>
-            </div>
+          <div id="icons">
+            <a href="http://www.twitter.fr"><i class="fa fa-twitter"></i></a>
+            <a href="http://www.facebook.fr"><i class="fa fa-facebook"></i></a>
+            <a href="https://instagram.com/aurelien_demey_magicien" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a>
           </div>
-
         </footer>
     </body>
-
 </html>
-
-<!-- test -->
