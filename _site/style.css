@@ -41,6 +41,10 @@ body {
     padding: 0;
     margin: 0;
     background-color: var(--bg);
+    background-image: url('media/Cards_Bg_Header.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 600px auto;
     color: var(--text);
 }
 
@@ -139,7 +143,7 @@ nav ul{
 
 #heroPhoto{
     flex: 1 1 340px;
-    max-width: 420px;
+    max-width: 320px;
 }
 
 .photo-frame{
