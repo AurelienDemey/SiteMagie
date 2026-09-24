@@ -100,7 +100,7 @@ a {
 
 nav {
     overflow: visible;
-    background-color: rgba(18, 15, 14, 0.92);
+    background-color: var(--bg-alt);
     backdrop-filter: blur(6px);
     position: fixed;
     top: 0;
@@ -477,6 +477,8 @@ button.submit-btn:hover{
     line-height: 1.7;
     background-color: var(--bg-alt);
     border-radius: var(--radius);
+    padding: 10px 30px;
+    margin: 20px;
 }
 
 .contact-info h4{
@@ -497,13 +499,14 @@ button.submit-btn:hover{
 /* **********************************FOOTER****************** */
 
 footer{
-    border-top: 1px solid var(--border);
+    /* border-top: 1px solid var(--border); */
     padding: 24px 7%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 0.8rem;
     color: var(--text);
+    background-color: var(--bg-alt);
 }
 
 .logo-icon{
