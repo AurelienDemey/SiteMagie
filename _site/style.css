@@ -509,9 +509,9 @@ button.submit-btn:hover{
 .contact-info{
     flex: 1 1 300px;
     color: var(--text);
-    font-size: var(--fs-body-big);
-    font-weight: var(--fw-body-big);
-    line-height: var(--lh-body-big);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-body);
+    line-height: var(--lh-body);
     background-color: var(--bg-alt);
     border-radius: var(--radius);
     padding: 10px 30px;
