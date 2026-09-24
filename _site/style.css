@@ -258,22 +258,23 @@ h1{
 }
 
 .card-visual{
+    CONTAIN-INTRINSIC-BLOCK-SIZE: AUTO 100PX;
     position: absolute;
-    top: 9%;
-    left: 11%;
-    width: 78%;
-    height: 53%;
+    top: 0%;
+    left: 7%;
+    width: 85%;
+    /* height: 53%; */
     object-fit: cover;
     z-index: 2;
-    -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 42%, #000 40%, transparent 78%);
-    mask-image: radial-gradient(ellipse 62% 58% at 50% 42%, #000 40%, transparent 78%);
+    /* -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 42%, #000 40%, transparent 78%); */
+    mask-image: radial-gradient(ellipse 80% 58% at 50% 50%, #000 40%, transparent 78%);
 }
 
 .card-caption{
     position: absolute;
     left: 9%;
     right: 9%;
-    top: 66%;
+    bottom: 10%;
     z-index: 3;
     text-align: center;
     color: var(--text);
