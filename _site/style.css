@@ -341,8 +341,8 @@ h1{
 }
 
 .feature-divider{
-    color: var(--border);
-    font-size: 1.4rem;
+    color: var(--accent);
+    font-size: .8rem;
 }
 
 /* **********************************AVIS****************** */
