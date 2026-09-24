@@ -53,9 +53,9 @@
     --fw-body-big: 300;
     --lh-body-big: 1.6;
 
-    --fs-body: 0.95rem;
+    --fs-body: 0.9rem;
     --fw-body: 300;
-    --lh-body: 1.5;
+    --lh-body: 1.2;
 
     --fs-body-emphasis: 0.9rem;
     --fw-body-emphasis: 600;
@@ -256,7 +256,7 @@ h1{
     font-size: var(--fs-title-main);
     line-height: var(--lh-title-main);
     color: var(--text);
-    margin: 0 0 6px 0;
+    margin: 0 0 0 0;
 }
 
 .tagline{
@@ -271,9 +271,9 @@ h1{
 
 #heroText p:not(.tagline){
     color: var(--text);
-    font-size: var(--fs-body-big);
-    font-weight: var(--fw-body-big);
-    line-height: var(--lh-body-big);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-body);
+    line-height: var(--lh-body);
     margin: 0 0 18px 0;
 }
 
