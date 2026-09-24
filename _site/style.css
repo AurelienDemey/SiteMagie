@@ -262,14 +262,14 @@ h1{
 .btn{
     display: inline-block;
     border: 1px solid var(--text);
-    border-radius: 30px;
-    padding: 13px 32px;
+    border-radius: 10px;
+    padding: 5px 15px;
     color: var(--text);
     font-family: var(--font-body);
-    font-size: var(--fs-body-emphasis);
-    font-weight: var(--fw-body-emphasis);
-    line-height: var(--lh-body-emphasis);
-    letter-spacing: var(--ls-body-emphasis);
+    font-size: var(--fs-body);
+    font-weight: var(--fw-body);
+    line-height: var(--lh-body);
+    letter-spacing: var(--ls-body);
     margin-top: 12px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
