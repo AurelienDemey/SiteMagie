@@ -125,44 +125,47 @@
 
         <section id="contact">
           <h2 class="section-title">Contact</h2>
-          <div class="contact-wrap">
-            <form action="https://formsubmit.co/demeyaurelien@gmail.com" method="POST">
-              <div>
-                <label for="nom">Nom et prénom</label>
-                <input type="text" id="nom" name="nom" required>
-              </div>
-              <div class="form-row">
+          <form class="contact-wrap" action="https://formsubmit.co/demeyaurelien@gmail.com" method="POST">
+            <div class="contact-columns">
+              <div class="form-fields">
                 <div>
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" required>
+                  <label for="nom">Nom et prénom</label>
+                  <input type="text" id="nom" name="nom" required>
+                </div>
+                <div class="form-row">
+                  <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                  </div>
+                  <div>
+                    <label for="tel">Numéro de téléphone</label>
+                    <input type="tel" id="tel" name="telephone">
+                  </div>
                 </div>
                 <div>
-                  <label for="tel">Numéro de téléphone</label>
-                  <input type="tel" id="tel" name="telephone">
+                  <label for="message">Votre message</label>
+                  <textarea id="message" name="message" required></textarea>
                 </div>
               </div>
-              <div>
-                <label for="message">Votre message</label>
-                <textarea id="message" name="message" required></textarea>
+
+              <div class="contact-info">
+                <p>Une question ? Une demande de devis ?</p>
+                <p>Contactez moi et je vous répondrai sous 48h pour façonner avec vous l'évènement de vos rêves.</p>
+                <p>Dispo partout en France.</p>
+
+                <h4>&#9670; Téléphone</h4>
+                <p><a href="tel:0634708277"><i class="fa fa-whatsapp"></i> 06 34 70 82 77</a></p>
+
+                <h4>&#9670; Mail</h4>
+                <p><a href="mailto:demeyaurelien@gmail.com">demeyaurelien@gmail.com</a></p>
+
+                <h4>&#9670; Instagram</h4>
+                <p><a href="https://instagram.com/aurelien_demey_magicien" target="_blank" rel="noopener"><i class="fa fa-instagram"></i> aurelien_demey_magicien</a></p>
               </div>
-              <button type="submit" class="submit-btn">Envoyer</button>
-            </form>
-
-            <div class="contact-info">
-              <p>Une question ? Une demande de devis ?</p>
-              <p>Contactez moi et je vous répondrai sous 48h pour façonner avec vous l'évènement de vos rêves.</p>
-              <p>Dispo partout en France.</p>
-
-              <h4>&#9670; Téléphone</h4>
-              <p><a href="tel:0634708277"><i class="fa fa-whatsapp"></i> 06 34 70 82 77</a></p>
-
-              <h4>&#9670; Mail</h4>
-              <p><a href="mailto:demeyaurelien@gmail.com">demeyaurelien@gmail.com</a></p>
-
-              <h4>&#9670; Instagram</h4>
-              <p><a href="https://instagram.com/aurelien_demey_magicien" target="_blank" rel="noopener"><i class="fa fa-instagram"></i> aurelien_demey_magicien</a></p>
             </div>
-          </div>
+
+            <button type="submit" class="submit-btn">Envoyer</button>
+          </form>
         </section>
 
         <footer>

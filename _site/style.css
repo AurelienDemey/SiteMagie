@@ -439,18 +439,22 @@ h1{
 }
 
 .contact-wrap{
-    display: flex;
-    gap: 8%;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.contact-columns{
+    display: flex;
+    gap: 8%;
     flex-wrap: wrap;
 }
 
-form{
+.form-fields{
     flex: 1 1 420px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin: 20px;
 }
 
 .form-row{
@@ -483,15 +487,15 @@ input, textarea, button.submit-btn{
 }
 
 textarea{
-    height: 140px;
+    height: 180px;
     resize: vertical;
 }
 
 button.submit-btn{
     width: auto;
-    align-self: flex-start;
-    border-radius: 30px;
-    padding: 13px 32px;
+    margin-top: 16px;
+    border-radius: 10px;
+    padding: 7px 19px;
     font-weight: var(--fw-body-emphasis);
     letter-spacing: var(--ls-body-emphasis);
     cursor: pointer;
@@ -583,7 +587,7 @@ footer{
 
     .gallery-grid{ grid-template-columns: repeat(2, 1fr); }
 
-    .contact-wrap{ flex-direction: column; }
+    .contact-columns{ flex-direction: column; }
     .form-row{ flex-direction: column; }
 
     footer{ flex-direction: column; gap: 10px; text-align: center; }
