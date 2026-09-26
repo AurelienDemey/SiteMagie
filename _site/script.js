@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     
+    if (!track || !carousel) return;
+
     let originalCards = Array.from(track.children);
     const totalOriginals = originalCards.length;
-    const cardWidth = 300;
     const gap = 24;
-    const moveAmount = cardWidth + gap;
 
-    // 1. Cloner les cartes pour créer l'effet de boucle infinie fluide
+    // Duplication des cartes pour la boucle infinie
     originalCards.forEach(card => {
         const cloneAfter = card.cloneNode(true);
         const cloneBefore = card.cloneNode(true);
@@ -19,21 +19,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let allCards = Array.from(track.children);
-    let currentIndex = totalOriginals; // Démarre au début du vrai lot (milieu)
+    let currentIndex = totalOriginals;
     let isTransitioning = false;
 
     function getVisibleCardsCount() {
-        if (window.innerWidth < 650) return 1;
+        if (window.innerWidth <= 768) return 1;
         if (window.innerWidth < 1000) return 2;
         return 3;
     }
 
     function updateCarouselLayout() {
         const visibleCards = getVisibleCardsCount();
-        
-        // La largeur du conteneur affiche N cartes complètes + 2 demi-cartes sur les bords
-        const carouselWidth = (cardWidth * visibleCards) + (gap * (visibleCards - 1)) + moveAmount;
-        carousel.style.width = `${carouselWidth}px`;
+        const cardWidth = 300;
+        const moveAmount = cardWidth + gap;
+
+        if (visibleCards > 1) {
+            // Sur Desktop : masque large avec effet de demi-cartes sur les bords
+            const carouselWidth = (cardWidth * visibleCards) + (gap * (visibleCards - 1)) + moveAmount;
+            carousel.style.width = `${carouselWidth}px`;
+        } else {
+            // Sur Mobile : largeur exacte de 1 carte
+            carousel.style.width = `${cardWidth}px`;
+        }
 
         applyPosition(false);
     }
@@ -45,17 +52,30 @@ document.addEventListener('DOMContentLoaded', () => {
             track.style.transition = 'none';
         }
 
-        // Décale de manière à laisser dépasser la moitié d'une carte à gauche
-        const offset = (currentIndex * moveAmount) - (moveAmount / 2);
-        track.style.transform = `translateX(-${offset}px)`;
+        const visibleCards = getVisibleCardsCount();
+        const cardWidth = 300;
+        const moveAmount = cardWidth + gap;
+        let offset;
 
+        if (visibleCards === 1) {
+            // Mobile : centrage direct
+            offset = currentIndex * moveAmount;
+        } else {
+            // Desktop : décalage pour la demi-carte
+            offset = (currentIndex * moveAmount) - (moveAmount / 2);
+        }
+
+        track.style.transform = `translateX(-${offset}px)`;
         updateActiveCards();
     }
 
     function updateActiveCards() {
         const visibleCards = getVisibleCardsCount();
         allCards.forEach((card, index) => {
-            if (index >= currentIndex && index < currentIndex + visibleCards) {
+            if (visibleCards === 1) {
+                // Sur mobile, la carte active est toujours à 100%
+                card.classList.add('is-visible');
+            } else if (index >= currentIndex && index < currentIndex + visibleCards) {
                 card.classList.add('is-visible');
             } else {
                 card.classList.remove('is-visible');
@@ -63,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Réinitialisation silencieuse (sans animation) quand on sort des bornes
     track.addEventListener('transitionend', () => {
         isTransitioning = false;
 
@@ -92,6 +111,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', updateCarouselLayout);
     
-    // Initialisation
     updateCarouselLayout();
 });
