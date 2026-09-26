@@ -347,37 +347,19 @@ h1{
 
 /* **********************************AVIS****************** */
 
-#reviews {
+#reviews{
     padding: 40px 0 90px 0;
 }
 
-.reviews-wrapper {
+.reviews-track{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 10px;
-}
-
-/* Le conteneur du carrousel applique un dégradé progressif sur les bords gauche/droite */
-.reviews-carousel {
-    overflow: hidden;
-    padding: 35px 0;
-    margin: -35px 0;
-    flex-shrink: 0;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-}
-
-.reviews-track {
-    display: flex;
     gap: 24px;
+    padding: 0 7%;
 }
 
-.review-card {
+.review-card{
     background-color: var(--bg-alt);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -385,25 +367,16 @@ h1{
     width: 300px;
     flex-shrink: 0;
     box-shadow: 0 0 30px rgba(0, 0, 0, 1);
-    
-    /* Animation de transition pour le texte des cartes */
-    opacity: 0.25;
-    transition: opacity 0.4s ease;
 }
 
-/* Seules les cartes parfaitement visibles dans le champ sont à 100% d'opacité */
-.review-card.is-visible {
-    opacity: 1;
-}
-
-.review-stars {
+.review-stars{
     color: var(--accent);
     font-size: 0.9rem;
     letter-spacing: 3px;
     margin-bottom: 14px;
 }
 
-.review-card p {
+.review-card p{
     color: var(--text);
     font-size: var(--fs-review-card);
     font-weight: var(--fw-review-card);
@@ -412,28 +385,24 @@ h1{
     margin: 0 0 16px 0;
 }
 
-.review-author {
+.review-author{
     font-size: var(--fs-review-author);
     font-weight: var(--fw-review-author);
     line-height: var(--lh-review-author);
     color: var(--text);
 }
 
-.review-nav {
+.review-nav{
     background: none;
     border: none;
     color: var(--text);
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     cursor: pointer;
     padding: 10px;
     flex-shrink: 0;
-    transition: color 0.2s ease;
-    z-index: 2;
 }
 
-.review-nav:hover { 
-    color: var(--accent); 
-}
+.review-nav:hover{ color: var(--text); }
 
 /* **********************************GALERIE****************** */
 
