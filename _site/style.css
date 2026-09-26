@@ -40,12 +40,12 @@
     --fw-title-main: 700;
     --lh-title-main: 1.1;
 
-    --fs-title: 2rem;
+    --fs-title: 3rem;
     --fw-title: 600;
     --lh-title: 1.2;
     --ls-title: 0.15em;
 
-    --fs-title-sub: 1.2rem;
+    --fs-title-sub: 1.3rem;
     --fw-title-sub: 400;
     --lh-title-sub: 1.3;
 
@@ -53,7 +53,7 @@
     --fw-body-big: 300;
     --lh-body-big: 1.6;
 
-    --fs-body: 0.75rem;
+    --fs-body: 1rem;
     --fw-body: 300;
     --lh-body: 1.2;
 
@@ -62,7 +62,7 @@
     --lh-body-emphasis: 1.4;
     --ls-body-emphasis: 0.05em;
 
-    --fs-navbar: 1rem;
+    --fs-navbar: 1.1rem;
     --fw-navbar: 400;
     --lh-navbar: 1.4;
     --ls-navbar: 0.03em;
