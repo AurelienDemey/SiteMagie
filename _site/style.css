@@ -45,24 +45,24 @@
     --lh-title: 1.2;
     --ls-title: 0.15em;
 
-    --fs-title-sub: 1.2rem;
+    --fs-title-sub: 1.3rem;
     --fw-title-sub: 400;
     --lh-title-sub: 1.3;
 
-    --fs-body-big: 1.05rem;
+    --fs-body-big: 1.1rem;
     --fw-body-big: 300;
     --lh-body-big: 1.6;
 
-    --fs-body: 0.75rem;
+    --fs-body: 1rem;
     --fw-body: 300;
     --lh-body: 1.2;
 
-    --fs-body-emphasis: 0.9rem;
+    --fs-body-emphasis: 1.1rem;
     --fw-body-emphasis: 600;
     --lh-body-emphasis: 1.4;
     --ls-body-emphasis: 0.05em;
 
-    --fs-navbar: 1rem;
+    --fs-navbar: 1.1rem;
     --fw-navbar: 400;
     --lh-navbar: 1.4;
     --ls-navbar: 0.03em;
@@ -71,11 +71,11 @@
     --fw-footer: 300;
     --lh-footer: 1;
 
-    --fs-review-card: 0.9rem;
+    --fs-review-card: 1rem;
     --fw-review-card: 300;
     --lh-review-card: 1.5;
 
-    --fs-review-author: 0.85rem;
+    --fs-review-author: 1rem;
     --fw-review-author: 500;
     --lh-review-author: 1.3;
 }
@@ -294,7 +294,7 @@ h1{
 }
 
 .feature-card{
-    width: 240px;
+    width: 300px;
 }
 
 .card-frame{
