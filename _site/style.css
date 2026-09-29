@@ -52,6 +52,10 @@
     --header-bg-x: -53%;
     --header-bg-y: -84%;
 
+    /* Opacité des 2 images Cards_Bg (0 = invisible, 1 = opaque, ex. 0.5 = 50 %) */
+    --header-bg-alpha: 0.6;
+    --footer-bg-alpha: 0.6;
+
     /* Familles de polices */
     --font-heading: 'Kreon', serif;
     --font-body: 'Montserrat', sans-serif;
@@ -265,6 +269,7 @@ nav ul{
     width: var(--header-bg-size);
     aspect-ratio: 1920 / 2000; /* proportions de l'image */
     background: url('media/Cards_Bg_Header.png') center / contain no-repeat;
+    opacity: var(--header-bg-alpha);
     z-index: -1;
     pointer-events: none;
 }
@@ -636,6 +641,7 @@ button.submit-btn:hover{
     width: var(--footer-bg-size);
     aspect-ratio: 1920 / 2000; /* proportions de l'image */
     background: url('media/Cards_Bg_Footer.png') center / contain no-repeat;
+    opacity: var(--footer-bg-alpha);
     z-index: -1;
     pointer-events: none;
 }
