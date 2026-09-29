@@ -595,10 +595,31 @@ footer{
 
 @media (max-width: 768px) {
 
+    /* Image de fond du header : taille et position calées sur la photo du hero
+       (1re valeur = header, 2e valeur = footer, inchangée).
+       Largeur photo ≈ 69vw (80% de #heroPhoto × 86% de contenu du hero).
+       Header = 2 × la photo ; image 1920×2000 → hauteur ≈ 144vw.
+       Vertical : centre photo (110px navbar + 43vw) − demi-hauteur image (72vw).
+       ⚠ À recalculer si on change le 80% de #heroPhoto ou le 7% du hero. */
+    body{
+        background-position:
+            calc(50% - 3vw) calc(110px - 94vw),
+            right bottom;
+        background-size:
+            calc(69vw * 2.9) auto,
+            600px auto;
+    }
+
+    /* Navbar sticky (sur le header) au lieu de fixed : elle reste en haut au scroll
+       mais occupe sa place dans la page, donc le hero commence juste en dessous */
+    header{ position: sticky; top: 0; z-index: 100; }
+    nav{ position: static; }
     nav ul{ flex-direction: column; gap: 12px; padding: 14px 5%; }
     #navBarLeft{ gap: 14px; }
 
-    #hero{ grid-template-columns: 1fr; padding-block: clamp(70px, 10vh, 140px); text-align: center; }
+    #hero{ grid-template-columns: 1fr; padding-top: 0; padding-bottom: clamp(70px, 10vh, 140px); text-align: center; }
+    #heroPhoto{ width: 80%; justify-self: center}
+    #heroText h1{ text-align: left; }
     #heroText p{ text-align: left; }
 
     /* Sous 768px, une seule colonne : plus lisible qu'une grille 2x2 trop serrée. */
