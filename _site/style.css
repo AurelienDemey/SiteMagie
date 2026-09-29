@@ -480,9 +480,14 @@ h1{
     overflow: clip;
 }
 
+/* Bords visibles (formulaire à gauche, contact info à droite) alignés sur ceux de
+   la galerie (grille de 1300px max, centrée) : le conteneur fait la largeur de la
+   galerie + 2 × 20px, pour compenser la marge de 20px de .form-fields et .contact-info.
+   - écran large : marges auto → 1340px centré ;
+   - plus étroit : -20px de chaque côté → déborde juste de la marge des blocs.
+   ⚠ À modifier si on change le max-width de .gallery-grid ou les marges de 20px. */
 .contact-wrap{
-    max-width: 1200px;
-    margin: 0 auto;
+    margin-inline: max(-20px, calc((100% - 1340px) / 2));
 }
 
 .contact-columns{
@@ -723,6 +728,7 @@ footer{
     /* Galerie : espacement entre les photos en mobile (lignes / colonnes) */
     .gallery-grid{ gap: 20px 20px; }
 
+    .contact-wrap{ margin-inline: 0; }
     .contact-columns{ grid-template-columns: 1fr; }
     /* Contact info en premier, puis le formulaire, puis le bouton Envoyer
        juste sous la textarea */
