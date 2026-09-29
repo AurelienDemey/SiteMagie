@@ -106,11 +106,11 @@ body {
         no-repeat;
         
     background-position: 
-        left top, 
+        -40PX -180PX, 
         right bottom;
         
     background-size: 
-        600px auto, 
+        850px auto, 
         600px auto;
         
     color: var(--text);
