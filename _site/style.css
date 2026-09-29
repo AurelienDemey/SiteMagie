@@ -42,6 +42,16 @@
     --footer-bg-right: -410px;
     --footer-bg-bottom: -300px;
 
+    /* Image Cards_Bg_Header ancrée à la photo du hero (surchargées en mobile).
+       Toutes les valeurs sont en % de la LARGEUR de la photo : l'image suit la photo.
+       size = largeur de l'image ;
+       x = décalage horizontal depuis le centre de la photo (négatif = gauche) ;
+       y = position du haut de l'image par rapport au haut de la photo (négatif = au-dessus).
+       Valeurs de départ calées sur l'ancien rendu en 1920×1080. */
+    --header-bg-size: 202%;
+    --header-bg-x: -53%;
+    --header-bg-y: -84%;
+
     /* Familles de polices */
     --font-heading: 'Kreon', serif;
     --font-body: 'Montserrat', sans-serif;
@@ -129,6 +139,12 @@ body {
    Les autres pages (avis.html) gardent le fond footer d'origine. */
 body:has(.contact-info){
     background-image: url('media/Cards_Bg_Header.png');
+}
+
+/* Sur les pages qui ont une photo de hero, l'image du header n'est plus en fond
+   de body : elle est ancrée à la photo (voir #heroPhoto::before). */
+body:has(#heroPhoto){
+    background-image: none;
 }
 
 ul { padding: 0; margin: 0; }
@@ -227,6 +243,30 @@ nav ul{
     padding-top: clamp(120px, 16vh, 180px);
     padding-bottom: clamp(60px, 8vh, 100px);
     padding-inline: 7%;
+    /* Coupe l'image du header qui dépasse sur les côtés (évite le scroll horizontal) */
+    overflow-x: clip;
+}
+
+#heroPhoto{
+    position: relative; /* repère de l'image ancrée (::before) */
+}
+
+/* Image Cards_Bg_Header ancrée à la photo, derrière elle.
+   Réglages : variables --header-bg-* dans :root (desktop) et dans la media query 768px (mobile).
+   La position verticale passe par margin-top, dont les % se calculent sur la
+   LARGEUR de la photo (comme la taille et le décalage horizontal). */
+#heroPhoto::before{
+    content: '';
+    position: absolute;
+    left: calc(50% + var(--header-bg-x));
+    top: 0;
+    margin-top: var(--header-bg-y);
+    transform: translateX(-50%);
+    width: var(--header-bg-size);
+    aspect-ratio: 1920 / 2000; /* proportions de l'image */
+    background: url('media/Cards_Bg_Header.png') center / contain no-repeat;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .photo-frame{
@@ -677,12 +717,16 @@ footer{
 
 @media (max-width: 768px) {
 
-    /* Image de fond du header : taille et position calées sur la photo du hero
-       (1re valeur = header, 2e valeur = footer, inchangée).
-       Largeur photo ≈ 69vw (80% de #heroPhoto × 86% de contenu du hero).
-       Header = 2 × la photo ; image 1920×2000 → hauteur ≈ 144vw.
-       Vertical : centre photo (110px navbar + 43vw) − demi-hauteur image (72vw).
-       ⚠ À recalculer si on change le 80% de #heroPhoto ou le 7% du hero. */
+    /* Image du header ancrée à la photo du hero : réglages mobile
+       (en % de la largeur de la photo, voir :root pour le détail) */
+    :root{
+        --header-bg-size: 290%;
+        --header-bg-x: -4%;
+        --header-bg-y: -136%;
+    }
+
+    /* Pages sans photo de hero (avis.html) : image du header en fond de body
+       (1re valeur = header, 2e valeur = footer) */
     body{
         background-position:
             calc(50% - 3vw) calc(110px - 94vw),
