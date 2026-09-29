@@ -204,17 +204,14 @@ nav ul{
 /* *****************************HERO **************************/
 
 #hero {
-    padding: 150px 7% 90px 7%;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(260px, 420px) minmax(320px, 605px);
+    gap: clamp(24px, 6vw, 80px);
     justify-content: center;
-    gap: 6%;
-    flex-wrap: wrap;
-}
-
-#heroPhoto{
-    flex: 1 1 340px;
-    max-width: 320px;
+    align-items: center;
+    padding-top: clamp(120px, 16vh, 180px);
+    padding-bottom: clamp(60px, 8vh, 100px);
+    padding-inline: 7%;
 }
 
 .photo-frame{
@@ -228,17 +225,14 @@ nav ul{
     display: block;
     width: 100%;
     height: auto;
-}
-
-#heroText{
-    flex: 1 1 420px;
-    max-width: 470px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
 }
 
 h1{
     font-family: var(--font-heading);
     font-weight: var(--fw-title-main);
-    font-size: var(--fs-title-main);
+    font-size: clamp(1.8rem, 1.1rem + 2.8vw, var(--fs-title-main));
     line-height: var(--lh-title-main);
     color: var(--text);
     margin: 0 0 0 0;
@@ -248,7 +242,7 @@ h1{
     font-family: var(--font-heading);
     /* font-style: italic; */
     font-weight: var(--fw-title-sub);
-    font-size: var(--fs-title-sub);
+    font-size: clamp(1rem, 0.85rem + 0.6vw, var(--fs-title-sub));
     line-height: var(--lh-title-sub);
     color: var(--accent);
     margin: 0 0 24px 0;
@@ -604,9 +598,8 @@ footer{
     nav ul{ flex-direction: column; gap: 12px; padding: 14px 5%; }
     #navBarLeft{ gap: 14px; }
 
-    #hero{ padding: 140px 6% 60px 6%; flex-direction: column; text-align: center; }
+    #hero{ grid-template-columns: 1fr; padding-block: clamp(70px, 10vh, 140px); text-align: center; }
     #heroText p{ text-align: left; }
-    h1{ font-size: 2.3rem; }
 
     /* Sous 768px, une seule colonne : plus lisible qu'une grille 2x2 trop serrée. */
     #features{ grid-template-columns: 1fr; justify-items: center; }
@@ -624,7 +617,7 @@ footer{
 }
 
 @media (max-width: 480px) {
-    h1{ font-size: 1.9rem; }
+    /* h1 est déjà fluide via clamp(), plus besoin de le fixer ici */
     .section-title{ font-size: 1.4rem; }
     .gallery-grid{ grid-template-columns: repeat(2, 1fr); gap: 8px; }
 }
