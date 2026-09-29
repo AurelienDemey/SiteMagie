@@ -647,9 +647,7 @@ button.submit-btn:hover{
 }
 
 .contact-info h4{
-    font-family: var(--font-heading);
     color: var(--accent);
-    text-transform: uppercase;
     font-size: var(--fs-body-emphasis);
     font-weight: var(--fw-body-emphasis);
     line-height: var(--lh-body-emphasis);
