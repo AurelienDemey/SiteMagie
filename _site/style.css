@@ -635,9 +635,19 @@ footer{
     #heroText h1{ text-align: left; }
     #heroText p{ text-align: left; }
 
-    /* Sous 768px, une seule colonne : plus lisible qu'une grille 2x2 trop serrée. */
-    #features{ grid-template-columns: 1fr; justify-items: center; }
-    .feature-card{ width: 100%; max-width: 340px; }
+    /* Grille 2 colonnes, marges et espaces resserrés au minimum.
+       minmax(0, 300px) : les cartes gardent 300px tant qu'il y a la place, et ne
+       rétrécissent que du strict nécessaire (≈ 163px sur un écran de 360px,
+       ≈ 178px sur 390px, ≈ 198px sur 430px). */
+    #features{
+        grid-template-columns: repeat(2, minmax(0, var(--card-width)));
+        padding-inline: 0px;
+        gap: 16px 0px;
+    }
+    .feature-card{ width: 100%; }
+    /* Texte strictement proportionnel à la carte (16px pour 300px), sans minimum
+       ni maximum, pour garder les mêmes proportions quelle que soit la taille */
+    .card-caption{ font-size: 5.34cqi; }
 
     .gallery-grid{ grid-template-columns: repeat(2, 1fr); }
 
