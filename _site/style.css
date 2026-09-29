@@ -290,10 +290,10 @@ h1{
     flex-wrap: nowrap;
 }
 
+/* Largeur fixe : les cartes ne rétrécissent pas, c'est la grille qui change
+   (voir media query 1350px) */
 .feature-card{
-    flex: 1 1 var(--card-width);
-    min-width: 0;
-    max-width: var(--card-width);
+    flex: 0 0 var(--card-width);
 }
 
 .card-frame{
@@ -334,7 +334,9 @@ h1{
     z-index: 3;
     text-align: center;
     color: var(--text);
-    font-size: clamp(0.6rem, 4cqi, var(--fs-body));
+    /* 5.34cqi = 16px (taille du texte du hero) sur une carte de 300px de large ;
+       le texte rétrécit si la carte rétrécit, pour ne pas déborder du cadre */
+    font-size: clamp(0.6rem, 5.34cqi, var(--fs-body));
     font-weight: var(--fw-body);
     line-height: var(--lh-body);
     margin: 0;
@@ -574,23 +576,34 @@ footer{
 
 /* **********************************RESPONSIVE************************************** */
 
-@media (max-width: 900px){
-    .gallery-grid{ grid-template-columns: repeat(3, 1fr); }
-    .reviews-track{ flex-wrap: wrap; }
+/* Sous ~1600px, les 4 cartes ne tiennent plus avec les marges d'origine (7%, gap 20px) :
+   on réduit marges et espaces au minimum, uniquement dans cette plage,
+   pour garder les cartes sur une ligne sur les laptops (1366px et plus). */
+@media (max-width: 1600px){
+    #features{ padding-inline: 16px; gap: 10px; }
+}
 
-    /* Au-delà de cette largeur, 4 cartes ne tiennent plus proprement sur une ligne :
-       on bascule sur une grille 2x2 explicite plutôt que de laisser le flex les
-       envelopper de façon imprévisible (c'est ce qui causait des rendus différents
-       d'un écran à l'autre : le passage à 2 lignes se déclenchait à un seuil de
-       largeur qui varie selon la barre de défilement, le zoom du navigateur, etc.) */
+/* Sous cette largeur, les 4 cartes de 300px ne tiennent plus sur une ligne :
+   4 × 300px + 3 losanges (~36px) + 6 espaces de 10px ≈ 1296px de contenu,
+   + 2 × 16px de padding + barre de défilement (~17px) → ≈ 1345px d'écran.
+   On bascule alors sur une grille 2x2 explicite (pas de flex-wrap, qui donnerait
+   3 + 1 cartes), avec les marges d'origine (7%).
+   ⚠ À recalculer si on change --card-width, le gap ou le padding. */
+@media (max-width: 1350px){
     #features{
+        padding-inline: 7%;
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, var(--card-width)));
+        grid-template-columns: repeat(2, var(--card-width));
         justify-content: center;
         gap: 30px 20px;
     }
-    .feature-card{ flex: none; width: 100%; max-width: var(--card-width); }
+    .feature-card{ flex: none; width: var(--card-width); }
     .feature-divider{ display: none; }
+}
+
+@media (max-width: 900px){
+    .gallery-grid{ grid-template-columns: repeat(3, 1fr); }
+    .reviews-track{ flex-wrap: wrap; }
 }
 
 @media (max-width: 768px) {
