@@ -197,7 +197,7 @@ nav ul{
 }
 
 .nav-dot{
-    color: var(--border);
+    color: var(--accent);
     font-size: 0.7rem;
 }
 
