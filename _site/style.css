@@ -491,8 +491,19 @@ input, textarea, button.submit-btn{
     border-radius: 6px;
 }
 
+/* Le bloc du message remplit la hauteur restante de la colonne du formulaire
+   (étirée par la grille à la hauteur de .contact-info), et la textarea remplit
+   ce bloc : son bas reste aligné sur le fond de .contact-info quelle que soit
+   la largeur. 180px minimum (utile en mobile, où il n'y a rien à côté). */
+.form-fields > div:last-child{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 textarea{
-    height: 180px;
+    flex: 1;
+    min-height: 180px;
     resize: vertical;
 }
 
@@ -654,8 +665,9 @@ footer{
 
     .contact-columns{ grid-template-columns: 1fr; }
     .form-fields{ grid-column: 1; grid-row: 1; }
-    .contact-info{ grid-column: 1; grid-row: 2; }
-    button.submit-btn{ grid-column: 1; grid-row: 3; justify-self: end; }
+    /* Bouton Envoyer juste sous la textarea, contact info en dessous */
+    button.submit-btn{ grid-column: 1; grid-row: 2; justify-self: end; }
+    .contact-info{ grid-column: 1; grid-row: 3; }
     .form-row{ flex-direction: column; }
 
     footer{ flex-direction: column; gap: 10px; text-align: center; }
