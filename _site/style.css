@@ -669,9 +669,9 @@ footer{
 
     /* Image du footer ancrée à .contact-info : taille et offsets en mobile */
     :root{
-        --footer-bg-size: 350px;
-        --footer-bg-right: -100px;
-        --footer-bg-bottom: -150px;
+        --footer-bg-size: 800px;
+        --footer-bg-right: -410px;
+        --footer-bg-bottom: -680px;
     }
 
     /* Navbar sticky (sur le header) au lieu de fixed : elle reste en haut au scroll
@@ -704,10 +704,11 @@ footer{
     .gallery-grid{ gap: 20px 20px; }
 
     .contact-columns{ grid-template-columns: 1fr; }
-    .form-fields{ grid-column: 1; grid-row: 1; }
-    /* Bouton Envoyer juste sous la textarea, contact info en dessous */
-    button.submit-btn{ grid-column: 1; grid-row: 2; justify-self: end; }
-    .contact-info{ grid-column: 1; grid-row: 3; }
+    /* Contact info en premier, puis le formulaire, puis le bouton Envoyer
+       juste sous la textarea */
+    .contact-info{ grid-column: 1; grid-row: 1; }
+    .form-fields{ grid-column: 1; grid-row: 2; }
+    button.submit-btn{ grid-column: 1; grid-row: 3; justify-self: end; }
     .form-row{ flex-direction: column; }
 
     footer{ flex-direction: column; gap: 10px; text-align: center; }
