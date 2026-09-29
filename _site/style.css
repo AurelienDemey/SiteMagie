@@ -451,6 +451,14 @@ h1{
     width: 300px;
     flex-shrink: 0;
     box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+    /* La carte est un lien vers les avis Google */
+    display: block;
+    transition: border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.review-card:hover{
+    border-color: var(--accent);
+    transform: translateY(-3px);
 }
 
 .review-stars{
@@ -846,6 +854,9 @@ body:has(.legal-page){ background-image: none; }
     .form-fields{ grid-column: 1; grid-row: 2; }
     button.submit-btn{ grid-column: 1; grid-row: 3; justify-self: end; }
     .form-row{ flex-direction: column; }
+
+    /* TEMPORAIRE : flèches des avis masquées en mobile */
+    .review-nav{ display: none; }
 
     footer{ flex-direction: column; gap: 10px; text-align: center; }
 
