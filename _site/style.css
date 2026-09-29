@@ -34,6 +34,14 @@
     /* Largeur de référence des cartes feature (base pour le calcul responsive) */
     --card-width: 300px;
 
+    /* Image Cards_Bg_Footer ancrée au coin bas-droit de .contact-info
+       (surchargées en mobile, voir media query 768px) :
+       taille = largeur de l'image (px, ou % de la largeur de .contact-info) ;
+       offsets = décalage depuis le coin bas-droit (négatif = vers l'extérieur) */
+    --footer-bg-size: 900px;
+    --footer-bg-right: -410px;
+    --footer-bg-bottom: -300px;
+
     /* Familles de polices */
     --font-heading: 'Kreon', serif;
     --font-body: 'Montserrat', sans-serif;
@@ -114,6 +122,13 @@ body {
         600px auto;
         
     color: var(--text);
+}
+
+/* Sur les pages qui ont un bloc contact info, l'image du footer n'est plus en fond
+   de body : elle est ancrée à .contact-info (voir .contact-info::before).
+   Les autres pages (avis.html) gardent le fond footer d'origine. */
+body:has(.contact-info){
+    background-image: url('media/Cards_Bg_Header.png');
 }
 
 ul { padding: 0; margin: 0; }
@@ -440,6 +455,9 @@ h1{
 
 #contact{
     padding: 40px 7% 60px 7%;
+    /* Coupe l'image du footer qui dépasse de la section (côtés et bas) : pas de scroll
+       horizontal, et la page ne s'allonge pas quand l'image descend sous le footer */
+    overflow: clip;
 }
 
 .contact-wrap{
@@ -540,6 +558,21 @@ button.submit-btn:hover{
     border-radius: var(--radius);
     padding: 10px 30px;
     margin: 20px;
+    position: relative; /* repère pour l'image ancrée (::before) */
+}
+
+/* Image Cards_Bg_Footer ancrée au coin bas-droit du bloc, derrière lui.
+   Réglages : variables --footer-bg-* dans :root (desktop) et dans la media query 768px (mobile) */
+.contact-info::before{
+    content: '';
+    position: absolute;
+    right: var(--footer-bg-right);
+    bottom: var(--footer-bg-bottom);
+    width: var(--footer-bg-size);
+    aspect-ratio: 1920 / 2000; /* proportions de l'image */
+    background: url('media/Cards_Bg_Footer.png') center / contain no-repeat;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .contact-info h4{
@@ -632,6 +665,13 @@ footer{
         background-size:
             calc(69vw * 2.9) auto,
             600px auto;
+    }
+
+    /* Image du footer ancrée à .contact-info : taille et offsets en mobile */
+    :root{
+        --footer-bg-size: 350px;
+        --footer-bg-right: -100px;
+        --footer-bg-bottom: -150px;
     }
 
     /* Navbar sticky (sur le header) au lieu de fixed : elle reste en haut au scroll
