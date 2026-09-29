@@ -50,7 +50,7 @@
        Valeurs de départ calées sur l'ancien rendu en 1920×1080. */
     --header-bg-size: 202%;
     --header-bg-x: -53%;
-    --header-bg-y: -84%;
+    --header-bg-y: -70%;
 
     /* Opacité des 2 images Cards_Bg (0 = invisible, 1 = opaque, ex. 0.5 = 50 %) */
     --header-bg-alpha: 0.6;
