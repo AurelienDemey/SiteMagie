@@ -288,10 +288,30 @@ h1{
     background: transparent;
 }
 
+/* Réserve la largeur du texte en gras : une copie invisible du texte (attribut
+   data-text dans le HTML), en gras et de hauteur nulle, sous le vrai texte.
+   Le bouton ne s'élargit donc pas au passage en gras du hover. */
+.btn[data-text]{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn[data-text]::after{
+    content: attr(data-text);
+    font-weight: var(--fw-body-emphasis);
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
+    user-select: none;
+}
+
 .btn:hover{
     background-color: var(--accent);
     border-color: var(--accent);
     color: var(--bg);
+    font-weight: var(--fw-body-emphasis);
 }
 
 /* *****************************FEATURES (atouts) ******************* */
