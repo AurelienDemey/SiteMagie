@@ -465,10 +465,31 @@ h1{
     transform: translateY(-3px);
 }
 
+/* 5 étoiles dessinées avec media/Ic_Star_Accent.png : copie de Ic_Star.png déjà
+   colorée en accent (#c2a091), en pleine résolution (nette sur tous les écrans).
+   Image de fond (et non masque) : fonctionne aussi quand le site est ouvert en local.
+   Réglages : --star-size (taille d'une étoile), --star-gap (espace entre les étoiles).
+   ⚠ La couleur est dans l'image : si on change --accent, il faut régénérer le PNG. */
 .review-stars{
-    color: var(--accent);
-    font-size: 0.9rem;
-    letter-spacing: 3px;
+    --star-size: 16px;
+    --star-gap: 4px;
+    --star-step: calc(var(--star-size) + var(--star-gap)); /* distance d'une étoile à la suivante */
+    width: calc(5 * var(--star-size) + 4 * var(--star-gap));
+    height: var(--star-size);
+    /* 5 couches = 5 étoiles, placées une à une (une répétition "space" en mettrait
+       autant qu'il en tient dans la largeur, soit parfois 6) */
+    background-image:
+        url('media/Ic_Star_Accent.png'), url('media/Ic_Star_Accent.png'),
+        url('media/Ic_Star_Accent.png'), url('media/Ic_Star_Accent.png'),
+        url('media/Ic_Star_Accent.png');
+    background-position:
+        0 0,
+        var(--star-step) 0,
+        calc(2 * var(--star-step)) 0,
+        calc(3 * var(--star-step)) 0,
+        calc(4 * var(--star-step)) 0;
+    background-size: var(--star-size) var(--star-size);
+    background-repeat: no-repeat;
     margin-bottom: 14px;
 }
 
