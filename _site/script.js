@@ -65,13 +65,96 @@ document.addEventListener('DOMContentLoaded', function () {
         cards.forEach(function (card) { card.style.minHeight = max + 'px'; });
     }
 
+    /* Animation de défilement. Clic sur la flèche droite (l'inverse pour la gauche) :
+       - tous les avis glissent d'un cran vers la gauche ;
+       - celui le plus à gauche disparaît en fondu (c'est une copie temporaire qui fait
+         le mouvement, car l'original est déjà caché) ;
+       - l'avis suivant arrive de la droite en glissant et en apparaissant en fondu.
+       Réglages : DURATION (durée en ms), EASING (courbe de vitesse). */
+    var DURATION = 450;
+    var EASING = 'cubic-bezier(0.4, 0, 0.2, 1)';
+    var running = []; // animations en cours, terminées d'un coup si on reclique
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function stopRunning() {
+        running.forEach(function (anim) { anim.finish(); });
+        running = [];
+    }
+
+    function animate(el, keyframes, onDone) {
+        // fill 'backwards' : la position de départ s'applique dès la toute première image
+        // (sinon l'avis peut s'afficher une image à sa nouvelle place avant de repartir)
+        var anim = el.animate(keyframes, { duration: DURATION, easing: EASING, fill: 'backwards' });
+        running.push(anim);
+        track.classList.add('is-sliding');
+        anim.onfinish = function () {
+            if (onDone) onDone();
+            // Fin du glissement quand plus aucune animation n'est en cours
+            if (running.every(function (a) { return a.playState === 'finished'; })) {
+                track.classList.remove('is-sliding');
+            }
+        };
+    }
+
+    function activeCards() {
+        return cards.filter(function (card) { return card.classList.contains('is-active'); });
+    }
+
     function go(step) {
+        stopRunning();
+
+        var trackRect = track.getBoundingClientRect();
+        var oldCards = activeCards();
+        var oldRects = oldCards.map(function (card) { return card.getBoundingClientRect(); });
+
         current = (current + step + cards.length) % cards.length;
         render();
+
+        if (reduceMotion || typeof track.animate !== 'function') return;
+
+        var newCards = activeCards();
+        var newRects = newCards.map(function (card) { return card.getBoundingClientRect(); });
+
+        // Un cran = l'écart entre deux avis voisins (en mode 1 carte : largeur + espace)
+        var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        var pitch = newRects.length > 1 ? newRects[1].left - newRects[0].left : newRects[0].width + gap;
+        var shift = step * pitch; // > 0 : flèche droite, les avis vont vers la gauche
+
+        newCards.forEach(function (card) {
+            if (oldCards.indexOf(card) !== -1) {
+                // Avis déjà visible : il était exactement un cran plus loin, il glisse d'un cran.
+                // (même valeur pour tous les avis : pas d'écart de mesure, donc pas de saute)
+                animate(card, [{ transform: 'translateX(' + shift + 'px)' }, { transform: 'none' }]);
+            } else {
+                // Avis qui arrive : glisse depuis le côté en apparaissant en fondu
+                animate(card, [
+                    { transform: 'translateX(' + shift + 'px)', opacity: 0 },
+                    { transform: 'none', opacity: 1 }
+                ]);
+            }
+        });
+
+        oldCards.forEach(function (card, i) {
+            if (newCards.indexOf(card) !== -1) return;
+            // Avis qui part : copie posée à son ancienne place, qui glisse et disparaît en fondu
+            var r = oldRects[i];
+            var ghost = card.cloneNode(true);
+            ghost.setAttribute('aria-hidden', 'true');
+            ghost.setAttribute('tabindex', '-1');
+            ghost.style.cssText += 'display:flex; position:absolute; margin:0; pointer-events:none;'
+                + 'left:' + (r.left - trackRect.left) + 'px; top:' + (r.top - trackRect.top) + 'px;'
+                + 'width:' + r.width + 'px; height:' + r.height + 'px;';
+            track.appendChild(ghost);
+            animate(ghost, [
+                { transform: 'none', opacity: 1 },
+                { transform: 'translateX(' + (-shift) + 'px)', opacity: 0 }
+            ], function () { ghost.remove(); });
+        });
     }
 
     // Place nécessaire pour MAX_VISIBLE cartes + les flèches, comparée à la place disponible
     function updateMode() {
+        stopRunning();
         var trackStyle = getComputedStyle(track);
         var available = track.clientWidth
             - parseFloat(trackStyle.paddingLeft)

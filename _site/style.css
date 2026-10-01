@@ -437,6 +437,8 @@ h1{
 
 #reviews{
     padding: 40px 0 90px 0;
+    /* Coupe les avis qui sortent sur les côtés pendant l'animation du carrousel */
+    overflow-x: clip;
 }
 
 .reviews-track{
@@ -532,7 +534,23 @@ h1{
 /* Carrousel (classe .is-carousel ajoutée par script.js) : seuls les avis affichés
    (.is-active, 3 ou 1) sont visibles, sur une seule ligne, entre les flèches.
    script.js leur donne un "order" 1, 2, 3 ; la flèche suivante passe après eux. */
-.reviews-track.is-carousel{ flex-wrap: nowrap; }
+.reviews-track.is-carousel{
+    flex-wrap: nowrap;
+    position: relative; /* repère de la copie de l'avis qui part, pendant l'animation */
+}
+/* Animation du carrousel (script.js) :
+   - will-change : les avis sont préparés à l'avance pour l'animation (calque à part),
+     sinon le navigateur les y bascule au début du mouvement, ce qui fait une saute ;
+   - pendant le glissement (.is-sliding), la transition du survol (transform) est
+     coupée pour ne pas entrer en conflit avec l'animation. */
+.reviews-track.is-carousel .review-card{ will-change: transform, opacity; }
+.reviews-track.is-sliding .review-card{ transition: none; }
+
+/* Les flèches restent devant les avis qui glissent (animation dans script.js) */
+.reviews-track.is-carousel .review-nav{
+    position: relative;
+    z-index: 1;
+}
 .reviews-track.is-carousel .review-card{ display: none; }
 .reviews-track.is-carousel .review-card.is-active{
     display: flex;
@@ -540,7 +558,10 @@ h1{
     flex-shrink: 1;
     min-width: var(--review-card-min);
 }
-.reviews-track.is-carousel .review-nav:last-child{ order: 99; }
+/* :last-of-type (dernier bouton) et non :last-child : pendant l'animation, la copie de
+   l'avis qui part est ajoutée à la fin du carrousel ; avec :last-child, la flèche droite
+   perdait sa place le temps du mouvement et décalait tous les avis. */
+.reviews-track.is-carousel .review-nav:last-of-type{ order: 99; }
 
 /* Mode « une seule carte » (quand 3 cartes ne tiennent plus côte à côte) :
    la carte peut rétrécir pour ne jamais dépasser de l'écran. */
