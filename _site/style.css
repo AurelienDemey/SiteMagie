@@ -101,7 +101,7 @@
     --lh-review-card: 1.5;
 
     --fs-review-author: 1rem;
-    --fw-review-author: 500;
+    --fw-review-author: 300;
     --lh-review-author: 1.3;
 }
 
@@ -452,7 +452,7 @@ h1{
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 26px 24px;
-    width: 300px;
+    width: 387px;
     flex-shrink: 0;
     box-shadow: 0 0 30px rgba(0, 0, 0, 1);
     /* La carte est un lien vers les avis Google */
@@ -506,7 +506,7 @@ h1{
     font-size: var(--fs-review-author);
     font-weight: var(--fw-review-author);
     line-height: var(--lh-review-author);
-    color: var(--text);
+    color: var(--accent);
 }
 
 .review-nav{
