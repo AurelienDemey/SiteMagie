@@ -96,8 +96,15 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
+    // Avis affichés, dans leur ordre À L'ÉCRAN (et non dans l'ordre du HTML) : quand la
+    // série boucle (ex. avis 5, 6, 1), l'avis 1 est premier dans le HTML mais dernier à
+    // l'écran. Mesurer dans l'ordre du HTML inversait le sens du mouvement.
     function activeCards() {
-        return cards.filter(function (card) { return card.classList.contains('is-active'); });
+        var list = [];
+        for (var k = 0; k < visible; k++) {
+            list.push(cards[(current + k) % cards.length]);
+        }
+        return list;
     }
 
     function go(step) {
