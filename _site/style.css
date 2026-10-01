@@ -521,6 +521,17 @@ h1{
 
 .review-nav:hover{ color: var(--text); }
 
+/* Mode « une seule carte » (classe ajoutée par script.js quand les 3 cartes ne
+   tiennent plus côte à côte) : seule la carte active est affichée, centrée entre
+   les flèches. Elle peut rétrécir pour ne jamais dépasser de l'écran. */
+.reviews-track.is-single{ flex-wrap: nowrap; }
+.reviews-track.is-single .review-card{ display: none; }
+.reviews-track.is-single .review-card.is-active{
+    display: block;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
 /* **********************************GALERIE****************** */
 
 #gallery{
@@ -879,9 +890,6 @@ body:has(.legal-page){ background-image: none; }
     .form-fields{ grid-column: 1; grid-row: 2; }
     button.submit-btn{ grid-column: 1; grid-row: 3; justify-self: end; }
     .form-row{ flex-direction: column; }
-
-    /* TEMPORAIRE : flèches des avis masquées en mobile */
-    .review-nav{ display: none; }
 
     footer{ flex-direction: column; gap: 10px; text-align: center; }
 
