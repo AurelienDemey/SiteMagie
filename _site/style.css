@@ -455,8 +455,10 @@ h1{
     width: 387px;
     flex-shrink: 0;
     box-shadow: 0 0 30px rgba(0, 0, 0, 1);
-    /* La carte est un lien vers les avis Google */
-    display: block;
+    /* La carte est un lien vers les avis Google.
+       Colonne flex : permet de pousser le nom de l'auteur en bas (voir .review-author) */
+    display: flex;
+    flex-direction: column;
     transition: border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
@@ -503,6 +505,7 @@ h1{
 }
 
 .review-author{
+    margin-top: auto; /* toujours en bas de la carte, quelle que soit la longueur de l'avis */
     font-size: var(--fs-review-author);
     font-weight: var(--fw-review-author);
     line-height: var(--lh-review-author);
@@ -521,13 +524,17 @@ h1{
 
 .review-nav:hover{ color: var(--text); }
 
-/* Mode « une seule carte » (classe ajoutée par script.js quand les 3 cartes ne
-   tiennent plus côte à côte) : seule la carte active est affichée, centrée entre
-   les flèches. Elle peut rétrécir pour ne jamais dépasser de l'écran. */
-.reviews-track.is-single{ flex-wrap: nowrap; }
-.reviews-track.is-single .review-card{ display: none; }
+/* Carrousel (classe .is-carousel ajoutée par script.js) : seuls les avis affichés
+   (.is-active, 3 ou 1) sont visibles, sur une seule ligne, entre les flèches.
+   script.js leur donne un "order" 1, 2, 3 ; la flèche suivante passe après eux. */
+.reviews-track.is-carousel{ flex-wrap: nowrap; }
+.reviews-track.is-carousel .review-card{ display: none; }
+.reviews-track.is-carousel .review-card.is-active{ display: flex; }
+.reviews-track.is-carousel .review-nav:last-child{ order: 99; }
+
+/* Mode « une seule carte » (quand 3 cartes ne tiennent plus côte à côte) :
+   la carte peut rétrécir pour ne jamais dépasser de l'écran. */
 .reviews-track.is-single .review-card.is-active{
-    display: block;
     flex-shrink: 1;
     min-width: 0;
 }
