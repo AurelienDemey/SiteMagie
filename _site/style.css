@@ -97,8 +97,8 @@
     --lh-footer: 1;
 
     --fs-review-card: 1rem;
-    --fw-review-card: 300;
-    --lh-review-card: 1.5;
+    --fw-review-card: 350;
+    --lh-review-card: 1;
 
     --fs-review-author: 1rem;
     --fw-review-author: 300;
@@ -444,15 +444,20 @@ h1{
     align-items: center;
     justify-content: center;
     gap: 24px;
-    padding: 0 7%;
+    padding: 0 3%;
+    /* Largeur minimale d'une carte en mode 3 cartes : elles font leur width (voir
+       .review-card) s'il y a la place, et peuvent rétrécir jusqu'à cette valeur.
+       script.js s'en sert pour décider quand passer à 1 seule carte.
+       300px → 3 cartes dès ~1240px d'écran (laptops, y compris zoom Windows 125-150 %) */
+    --review-card-min: 300px;
 }
 
 .review-card{
     background-color: var(--bg-alt);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 26px 24px;
-    width: 387px;
+    padding: 24px 10px;
+    width: 367px;
     flex-shrink: 0;
     box-shadow: 0 0 30px rgba(0, 0, 0, 1);
     /* La carte est un lien vers les avis Google.
@@ -529,7 +534,12 @@ h1{
    script.js leur donne un "order" 1, 2, 3 ; la flèche suivante passe après eux. */
 .reviews-track.is-carousel{ flex-wrap: nowrap; }
 .reviews-track.is-carousel .review-card{ display: none; }
-.reviews-track.is-carousel .review-card.is-active{ display: flex; }
+.reviews-track.is-carousel .review-card.is-active{
+    display: flex;
+    /* Mode 3 cartes : rétrécissent si besoin, jusqu'à --review-card-min */
+    flex-shrink: 1;
+    min-width: var(--review-card-min);
+}
 .reviews-track.is-carousel .review-nav:last-child{ order: 99; }
 
 /* Mode « une seule carte » (quand 3 cartes ne tiennent plus côte à côte) :

@@ -77,7 +77,10 @@ document.addEventListener('DOMContentLoaded', function () {
             - parseFloat(trackStyle.paddingLeft)
             - parseFloat(trackStyle.paddingRight);
         var gap = parseFloat(trackStyle.columnGap) || 0;
-        var cardWidth = parseFloat(getComputedStyle(cards[0]).width);
+        // Largeur minimale d'une carte en mode 3 cartes (variable --review-card-min du CSS) ;
+        // à défaut, la largeur normale des cartes
+        var cardWidth = parseFloat(trackStyle.getPropertyValue('--review-card-min'))
+            || parseFloat(getComputedStyle(cards[0]).width);
         var navWidth = prev.offsetWidth + next.offsetWidth;
         var count = Math.min(MAX_VISIBLE, cards.length);
         var needed = count * cardWidth + navWidth + (count + 1) * gap;
