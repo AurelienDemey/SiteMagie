@@ -359,7 +359,7 @@ h1{
     font-weight: var(--fw-body-emphasis);
 }
 
-/* *****************************FEATURES (atouts) ******************* */
+/* *****************************FEATURES (atouts) ********************************************** */
 
 #features{
     padding: 40px 7% 90px 7%;
@@ -397,13 +397,17 @@ h1{
     CONTAIN-INTRINSIC-BLOCK-SIZE: AUTO 100PX;
     position: absolute;
     top: 0%;
-    left: 7%;
-    width: 85%;
+    /* Recouvre la bordure intérieure des cadres Card0X.png
+       (image de 1080px de large : bordure intérieure de 78px à 1002px, symétrique),
+       + 1px de chaque côté pour qu'il ne reste aucun interstice avec le cadre.
+       Réglage : le "1px" de left et le "2px" de width (toujours le double). */
+    left: calc(78 / 1080 * 100% - 3px);   /* ≈ 7,22 % − 1px */
+    width: calc(924 / 1080 * 100% + 6px); /* ≈ 85,56 % + 2px */
     /* height: 53%; */
     object-fit: cover;
     z-index: 2;
-    -webkit-mask-image: radial-gradient(ellipse 80% 58% at 50% 50%, #000 40%, transparent 78%);
-    mask-image: radial-gradient(ellipse 80% 58% at 50% 50%, #000 40%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 62% at 50% 50%, #000 40%, transparent 81%);
+    mask-image: radial-gradient(ellipse 80% 62% at 50% 50%, #000 40%, transparent 81%);
 }
 
 .card-caption{
@@ -416,7 +420,7 @@ h1{
     color: var(--text);
     /* 5.34cqi = 16px (taille du texte du hero) sur une carte de 300px de large ;
        le texte rétrécit si la carte rétrécit, pour ne pas déborder du cadre */
-    font-size: clamp(0.6rem, 5.34cqi, var(--fs-body));
+    font-size: clamp(0.6rem, 5.34cqi, .95rem);
     font-weight: var(--fw-body);
     line-height: var(--lh-body);
     margin: 0;
@@ -429,7 +433,7 @@ h1{
     font-size: .8rem;
 }
 
-/* **********************************AVIS****************** */
+/* **********************************AVIS*********************************************************** */
 
 #reviews{
     padding: 40px 0 90px 0;
@@ -524,7 +528,7 @@ h1{
     display: block;
 }
 
-/* **********************************CONTACT****************** */
+/* **********************************CONTACT********************************************** */
 
 #contact{
     padding: 40px 7% 60px 7%;
