@@ -742,6 +742,36 @@ button.submit-btn:hover{
 .contact-info a{ color: var(--text); }
 .contact-info a:hover{ color: var(--accent); }
 
+/* Badge Linkaband en bas du bloc contact info, séparé par un filet fin.
+   Réglage : taille du badge = width de .contact-badge img */
+.contact-badge{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.contact-badge > a{ flex-shrink: 0; line-height: 0; }
+
+.contact-badge img{
+    width: 70px;
+    height: auto;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+}
+
+.contact-badge > a:hover img{ transform: scale(1.05); }
+
+.contact-badge p{
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: var(--lh-body-emphasis);
+}
+
+.contact-badge p a{ text-decoration: underline; }
+
 /* **********************************FOOTER****************** */
 
 footer{
